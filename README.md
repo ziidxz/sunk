@@ -4,7 +4,7 @@ A private subscription ledger. It shows what leaves every month, what renews
 next, what changed price, and what cancelling gives back. No account, no bank
 login, no analytics, and no server-side copy of the ledger.
 
-Public site, once deployed: <https://ziidxz.github.io/sunk/>
+Public site: <https://ziidxz.github.io/sunk/>
 
 ## Editions
 
@@ -64,6 +64,8 @@ tools/
   build.mjs          docs/ and dist/ builder, link checker
   icons.mjs          reproducible PNG icons
   OFFLINE-README.txt buyer readme template
+  snapshots.mjs      happy-dom pages for visual inspection
+SALES.md             order workflow, reply templates, pre-flight list
 site/                public marketing site and legal pages
 docs/                generated GitHub Pages output (committed)
 dist/                generated paid bundle (not committed)
@@ -103,7 +105,8 @@ The site is plain static files. On GitHub Pages:
 Card checkout is not connected yet. `site/order.html` describes a manual email
 order path: the buyer writes to `ziidcxz@gmail.com`, receives the payment method
 and total, pays, and gets the HTML file and `README.txt` by email. The paid
-bundle is generated with `npm run build` and kept out of Git.
+bundle is generated with `npm run build` and kept out of Git. The reply and
+delivery templates, plus the pre-flight list, are in `SALES.md`.
 
 Before switching to card checkout, connect a payment provider and replace the
 email steps on the order page with the provider's checkout link. The price,

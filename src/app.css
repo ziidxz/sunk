@@ -178,6 +178,10 @@ main {
   background: var(--accent-soft);
 }
 
+.notice-warn span {
+  color: var(--ink);
+}
+
 .notice .button {
   margin-left: auto;
 }
