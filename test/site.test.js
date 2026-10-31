@@ -65,6 +65,11 @@ test("landing structured data parses and matches the page", () => {
   const product = data["@graph"].find((item) => item["@type"] === "Product");
   assert.equal(product.offers.price, "12.00");
   assert.equal(product.offers.priceCurrency, "USD");
+  assert.ok(Array.isArray(product.image) && product.image.length, "Product has the image Google requires");
+  for (const src of product.image) {
+    const name = src.split("/").pop();
+    assert.ok(fs.existsSync(path.join(root, name)), "Product image exists: " + name);
+  }
   const faq = data["@graph"].find((item) => item["@type"] === "FAQPage");
   const details = (landing.match(/<details>/g) || []).length;
   assert.equal(faq.mainEntity.length, details, "FAQPage mirrors every visible answer");
