@@ -1599,9 +1599,19 @@
       editionChildren.push(make("a", { class: "button ghost", href: docLink("order.html"), text: "See the offline edition" }));
     }
     editionChildren.push(make("p", { class: "hint" }, [
-      make("a", { href: docLink("privacy.html"), text: "Privacy" }),
+      make("a", {
+        href: docLink("privacy.html"),
+        target: PRO ? "_blank" : null,
+        rel: PRO ? "noopener noreferrer" : null,
+        text: "Privacy"
+      }),
       doc.createTextNode(" \u00b7 "),
-      make("a", { href: docLink("terms.html"), text: "Terms" }),
+      make("a", {
+        href: docLink("terms.html"),
+        target: PRO ? "_blank" : null,
+        rel: PRO ? "noopener noreferrer" : null,
+        text: "Terms"
+      }),
       doc.createTextNode(" \u00b7 Version 1.0.0")
     ]));
 

@@ -129,6 +129,11 @@ html = html.replace(
   "<head>\n  <!-- Sunk offline edition. One file, no network required after download. -->"
 );
 
+html = html.replace(
+  /href="(https:\/\/ziidxz\.github\.io\/sunk\/[^"]*)"/g,
+  'href="$1" target="_blank" rel="noopener noreferrer"'
+);
+
 const offlinePath = join(dist, "sunk-offline.html");
 writeFileSync(offlinePath, html);
 const offlineSize = statSync(offlinePath).size;
