@@ -42,32 +42,17 @@
           {
             "@type": "Question",
             "name": "Does Sunk connect to my bank?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. There is no bank login, no statement upload and no credential. You type subscriptions yourself. The offline edition can read a CSV you downloaded from your bank, but that file is read in your browser and is not uploaded." }
+            "acceptedAnswer": { "@type": "Answer", "text": "No. There is no bank login, no statement upload and no credential; you type the subscriptions yourself. The paid edition can read a CSV from your bank in the browser without uploading it." }
           },
           {
             "@type": "Question",
             "name": "Where is my data stored?",
-            "acceptedAnswer": { "@type": "Answer", "text": "In this browser, using localStorage. There is no server copy and no account. You can export a JSON backup and restore it later or on another browser." }
-          },
-          {
-            "@type": "Question",
-            "name": "What happens when I clear my browser data?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The ledger is deleted with it. Download a JSON backup first if the entries matter. This is the trade for not having an account or a server." }
-          },
-          {
-            "@type": "Question",
-            "name": "Can Sunk cancel a subscription for me?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. It gives you the dates and amounts, stores a cancellation link, and records the change when you mark an entry cancelled. The cancellation itself still happens with the service." }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the paid file expire?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. It is one HTML file with no activation and no license server. Keep a copy. It works as long as a browser can open local HTML files." }
+            "acceptedAnswer": { "@type": "Answer", "text": "In this browser, using localStorage; there is no server copy and no account. Export a JSON backup for safety, because clearing site data deletes the ledger." }
           },
           {
             "@type": "Question",
             "name": "Can I use it on my phone?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The web edition is responsive and can be added to your home screen. The data stays in that browser, so a phone and a laptop do not sync. The offline file can be opened on a phone as well, though CSV import is easier on a computer." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The web edition can be added to your home screen. The data stays in that browser, so a phone and a laptop do not sync; the offline file opens on a phone too." }
           },
           {
             "@type": "Question",
@@ -77,17 +62,12 @@
           {
             "@type": "Question",
             "name": "How fast does the file arrive?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Delivery is by email once payment clears, and it is handled by hand. Allow up to two business days. If nothing has arrived, check the spam folder and write again." }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I read the file before running it?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. It is one plain HTML file with no install step and nothing obfuscated. Open it in a text editor, read the markup and the scripts, then run it in a browser." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Delivery is by email once payment clears, handled by hand. Allow up to two business days, then write again if nothing has arrived." }
           },
           {
             "@type": "Question",
             "name": "Who am I buying from?",
-            "acceptedAnswer": { "@type": "Answer", "text": "One person. There is no company behind Sunk. The maker reads the order email, sends the file and answers refund requests at ziidcxz@gmail.com." }
+            "acceptedAnswer": { "@type": "Answer", "text": "One person, not a company. The maker reads the order email, sends the file and handles refunds at ziidcxz@gmail.com." }
           },
           {
             "@type": "Question",
@@ -212,8 +192,8 @@
             <p>Most banking apps are built to show what happened. Sunk is built around what is about to happen.</p>
           </div>
           <div class="prose">
-            <p>There is no bank connection to approve, and no account to create. You type what you pay for, and the page does the arithmetic: monthly cost, yearly cost, the next charge, the price change, the trial date.</p>
-            <p>When you are done, the whole commitment sits on one screen instead of being reconstructed from six different billing pages.</p>
+            <p>There is no bank connection to approve and no account to create. You type what you pay for; the page does the arithmetic.</p>
+            <p>The monthly cost, the yearly cost, the next charge, the price change and the trial date sit on one screen instead of six billing pages.</p>
           </div>
         </div>
       </div>
@@ -229,22 +209,22 @@
           <div class="behavior">
             <p class="behavior-index">01</p>
             <h3>What leaves every month</h3>
-            <p>Weekly, monthly and yearly plans are converted to one monthly and one yearly figure. A $120 renewal is not treated like a $10 one because it happens to be billed once.</p>
+            <p>Every weekly, monthly and yearly plan becomes one monthly figure and one yearly figure, so a $120 renewal never reads like a $10 one.</p>
           </div>
           <div class="behavior">
             <p class="behavior-index">02</p>
             <h3>What renews next</h3>
-            <p>Overdue charges and the next 30 days sit at the top. Trial endings are called out separately, because a trial is the one renewal that surprises people.</p>
+            <p>Overdue charges and the next 30 days sit at the top; trial endings are called out separately, because that is the renewal people miss.</p>
           </div>
           <div class="behavior">
             <p class="behavior-index">03</p>
             <h3>What changed price</h3>
-            <p>When you edit a price, the old one stays in the history. The row shows the increase and the date it started, so you can see what the service is costing now rather than what it cost when you signed up.</p>
+            <p>When you edit a price, the old one stays in the row's history with the date it started, so you see what the service costs now.</p>
           </div>
           <div class="behavior">
             <p class="behavior-index">04</p>
             <h3>What cancelling gives back</h3>
-            <p>Every row can be marked cancelled. Sunk shows the yearly amount that stops leaving and keeps the entry in the ledger, so the history does not disappear.</p>
+            <p>Marking a row cancelled shows the yearly amount that stops leaving, and keeps the entry in the ledger.</p>
           </div>
         </div>
       </div>
@@ -359,27 +339,15 @@
         <div class="faq">
           <details>
             <summary>Does Sunk connect to my bank?</summary>
-            <p>No. There is no bank login, no statement upload and no credential. You type subscriptions yourself. The offline edition can read a CSV you downloaded from your bank, but that file is read in your browser and is not uploaded.</p>
+            <p>No. There is no bank login, no statement upload and no credential; you type the subscriptions yourself. The paid edition can read a CSV from your bank in the browser without uploading it.</p>
           </details>
           <details>
             <summary>Where is my data stored?</summary>
-            <p>In this browser, using localStorage. There is no server copy and no account. You can export a JSON backup and restore it later or on another browser.</p>
-          </details>
-          <details>
-            <summary>What happens when I clear my browser data?</summary>
-            <p>The ledger is deleted with it. Download a JSON backup first if the entries matter. This is the trade for not having an account or a server.</p>
-          </details>
-          <details>
-            <summary>Can Sunk cancel a subscription for me?</summary>
-            <p>No. It gives you the dates and amounts, stores a cancellation link, and records the change when you mark an entry cancelled. The cancellation itself still happens with the service.</p>
-          </details>
-          <details>
-            <summary>Does the paid file expire?</summary>
-            <p>No. It is one HTML file with no activation and no license server. Keep a copy. It works as long as a browser can open local HTML files.</p>
+            <p>In this browser, using localStorage; there is no server copy and no account. Export a JSON backup for safety, because clearing site data deletes the ledger.</p>
           </details>
           <details>
             <summary>Can I use it on my phone?</summary>
-            <p>Yes. The web edition is responsive and can be added to your home screen. The data stays in that browser, so a phone and a laptop do not sync. The offline file can be opened on a phone as well, though CSV import is easier on a computer.</p>
+            <p>Yes. The web edition can be added to your home screen. The data stays in that browser, so a phone and a laptop do not sync; the offline file opens on a phone too.</p>
           </details>
           <details>
             <summary>Why is CSV import paid?</summary>
@@ -387,15 +355,11 @@
           </details>
           <details>
             <summary>How fast does the file arrive?</summary>
-            <p>Delivery is by email once payment clears, and it is handled by hand. Allow up to two business days. If nothing has arrived, check the spam folder and write again.</p>
-          </details>
-          <details>
-            <summary>Can I read the file before running it?</summary>
-            <p>Yes. It is one plain HTML file with no install step and nothing obfuscated. Open it in a text editor, read the markup and the scripts, then run it in a browser.</p>
+            <p>Delivery is by email once payment clears, handled by hand. Allow up to two business days, then write again if nothing has arrived.</p>
           </details>
           <details>
             <summary>Who am I buying from?</summary>
-            <p>One person. There is no company behind Sunk. The maker reads the order email, sends the file and answers refund requests at ziidcxz@gmail.com.</p>
+            <p>One person, not a company. The maker reads the order email, sends the file and handles refunds at ziidcxz@gmail.com.</p>
           </details>
           <details>
             <summary>What if the paid file does not work?</summary>
