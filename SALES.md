@@ -17,35 +17,37 @@ before paying. Do not remove that option.
 
 ## The live order path
 
-The order page asks the buyer to email <ziidcxz@gmail.com> with the subject
-"Sunk offline edition". The reply confirms the payment method and total before
-any money is sent. Delivery is manual.
+The order page sends the buyer to <https://paypal.me/AGYMZIDANE/12> with $12
+USD filled in. The buyer then emails <ziidcxz@gmail.com> with the subject
+"Sunk offline edition", the name or email on the PayPal payment, and the
+address that should receive the file. Delivery is manual, up to two business
+days after payment clears.
 
-This is a real sale path, but it is not card checkout. It depends on answering
-email and confirming a payment method by hand.
+This is a real card-capable sale path through PayPal. It still depends on
+checking email and matching payments by hand.
 
 ## Order workflow
 
-1. Read the email. Confirm the buyer understands it is a one-time $12 purchase
-   for a single HTML file, not a subscription.
-2. Reply with the payment method you can actually accept, the total in USD, and
-   what happens after payment. Do not ask for card numbers by email.
-3. When payment clears, send `dist/sunk-offline.html`, `dist/README.txt`, and
-   the delivery note below.
-4. Keep the order email and payment record for accounting and refunds.
-5. If the buyer reports a problem within 14 days, follow the refund section of
-   the public terms. Refund through the same method where possible.
+1. When the payment-name email arrives, match it against the PayPal
+   transaction list: amount $12 USD, goods and services preferred so the
+   receipt and the refund promise both work.
+2. If the payment matches, send `dist/sunk-offline.html`, `dist/README.txt`,
+   and the delivery note below to the address in the email. If it does not
+   match, reply to that email and ask for the PayPal receipt before sending.
+3. Keep the order email and payment record for accounting and refunds.
+4. If the buyer reports a problem within 14 days, follow the refund section
+   of the public terms. Refund from the PayPal transaction page where
+   possible.
 
 ## Payment methods
 
-Use only a method you have set up and can verify. Common choices:
+The public method is PayPal.me at <https://paypal.me/AGYMZIDANE/12>. The
+payment should be goods and services, not friends and family: F&F payments
+carry no receipt and Telegram-style "trust me" energy, and selling software
+that way invites account limitation.
 
-- A payment provider invoice (PayPal, Stripe, Lemon Squeezy, Gumroad).
-- A bank transfer with a reference the buyer can quote.
-- A local payment method that gives both sides a receipt.
-
-Do not name a method on the public order page until it is ready. The current
-page deliberately says the method is confirmed in the reply.
+Other methods may be arranged privately with a buyer, but do not name them
+on the public page until they are set up and proven.
 
 ## Reply template
 
@@ -92,18 +94,19 @@ Thanks,
 [your name]
 ```
 
-## Before taking card payments
+## Before adding card-only checkout
 
-The site is ready for a checkout link, but these details are still needed:
+PayPal no longer leaves buyer intentions blocked, but a dedicated card-only
+provider widens the funnel further. Still needed for that:
 
-- A payment provider account and its public checkout link.
+- A card-only provider account (Gumroad, Payhip or Lemon Squeezy) and its
+  public checkout link, placed next to the PayPal button on the order page.
 - The seller's legal name, business address and tax details for the terms.
 - A refund and chargeback process that matches the provider's rules.
 - A privacy update if the provider collects data on the page.
 
-Once those exist, replace the email steps on `site/order.html` with the
-checkout button, keep the $12 price and 14-day refund promise, rebuild, and
-push `docs/`.
+Once those exist, add the provider button on `site/order.html`, keep the $12
+price and 14-day refund promise, rebuild, and push `docs/`.
 
 ## File integrity
 
@@ -123,6 +126,7 @@ checksum you recorded.
 - [ ] `dist/sunk-offline.html` opens and accepts a test subscription.
 - [ ] `dist/README.txt` is in the same build.
 - [ ] The order email address receives mail.
-- [ ] A test order can be answered and delivered within two business days.
+- [ ] The PayPal.me link opens with $12 USD prefilled.
+- [ ] A test order can be confirmed and delivered within two business days.
 - [ ] The refund window and method are understood.
 - [ ] Seller legal details are added to the terms before card checkout.

@@ -49,6 +49,7 @@ test("public pages keep the price and the order path together", () => {
 
   assert.match(landing, /\$12/);
   assert.match(order, /\$12/);
+  assert.match(order, /paypal\.me\/AGYMZIDANE\/12/);
   assert.match(order, /under 130 KB/);
   assert.match(order, /mailto:ziidcxz@gmail\.com/);
   assert.match(order, /14 days/);
