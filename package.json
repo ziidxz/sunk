@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node tools/build.mjs",
     "test": "node tools/build.mjs && node --test test/*.test.js",
-    "dev": "node server.mjs"
+    "dev": "node server.mjs",
+    "indexnow": "node tools/indexnow.mjs"
   },
   "devDependencies": {
     "happy-dom": "^21.0.4"
