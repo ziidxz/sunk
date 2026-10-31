@@ -393,44 +393,55 @@
     if (isSample(sub)) meta.push("Sample");
     nameCell.appendChild(make("span", { class: "sub-meta", text: meta.join(" \u00b7 ") }));
 
-    var cycleCell = make("td", { "data-label": "Cycle" }, [
-      make("span", { text: C.cycleLabel(sub.cycle) })
+    var cycleCell = make("td", {}, [
+      make("span", { class: "cell-label", "aria-hidden": "true", text: "Cycle" }),
+      make("div", { class: "cell-body" }, [
+        make("span", { text: C.cycleLabel(sub.cycle) })
+      ])
     ]);
 
-    var priceCell = make("td", { class: "cell-price", "data-label": "Price" });
-    priceCell.appendChild(make("span", { class: "price-main", text: fmt(sub.priceMinor) + " " + C.cycleShort(sub.cycle) }));
+    var priceCell = make("td", { class: "cell-price" }, [
+      make("span", { class: "cell-label", "aria-hidden": "true", text: "Price" })
+    ]);
+    var priceBody = make("div", { class: "cell-body" });
+    priceBody.appendChild(make("span", { class: "price-main", text: fmt(sub.priceMinor) + " " + C.cycleShort(sub.cycle) }));
     if (sub.cycle !== "monthly") {
-      priceCell.appendChild(make("span", {
+      priceBody.appendChild(make("span", {
         class: "price-sub",
         text: "\u2248 " + fmt(Math.round(C.monthlyMinor(sub))) + " a month"
       }));
     }
     var change = C.priceChange(sub);
     if (change) {
-      priceCell.appendChild(make("span", {
+      priceBody.appendChild(make("span", {
         class: "hike",
         text: "Up " + fmt(change.delta) + " since " + dateLabel(change.since)
       }));
     }
+    priceCell.appendChild(priceBody);
 
-    var dueCell = make("td", { "data-label": "Next charge" });
+    var dueCell = make("td", {}, [
+      make("span", { class: "cell-label", "aria-hidden": "true", text: "Next charge" })
+    ]);
+    var dueBody = make("div", { class: "cell-body" });
     if (sub.status === "active") {
       if (sub.nextDate) {
         var overdue = sub.nextDate < today;
-        dueCell.appendChild(make("span", {
+        dueBody.appendChild(make("span", {
           class: "due" + (overdue ? " overdue" : ""),
           text: C.dueLabel(sub.nextDate, today)
         }));
-        dueCell.appendChild(make("span", { class: "due-date", text: dateLabel(sub.nextDate) }));
+        dueBody.appendChild(make("span", { class: "due-date", text: dateLabel(sub.nextDate) }));
       } else {
-        dueCell.appendChild(make("span", { class: "due muted", text: "No date set" }));
+        dueBody.appendChild(make("span", { class: "due muted", text: "No date set" }));
       }
     } else {
-      dueCell.appendChild(make("span", {
+      dueBody.appendChild(make("span", {
         class: "due muted",
         text: sub.status === "paused" ? "Paused" : "Stopped"
       }));
     }
+    dueCell.appendChild(dueBody);
 
     var actions = make("td", { class: "cell-actions", "data-label": "Actions" });
     var group = make("div", { class: "row-actions" }, [

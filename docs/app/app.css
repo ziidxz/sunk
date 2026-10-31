@@ -270,6 +270,10 @@ main {
   white-space: nowrap;
 }
 
+.cell-label {
+  display: none;
+}
+
 .sub-name {
   display: inline;
   min-height: 44px;
@@ -1034,9 +1038,9 @@ dialog[open] {
     border: 0;
   }
 
-  .ledger-table td::before {
+  .ledger-table .cell-label {
+    display: block;
     flex: 0 0 6.6rem;
-    content: attr(data-label);
     color: var(--muted);
     font-size: 0.68rem;
     font-weight: 600;
@@ -1044,14 +1048,14 @@ dialog[open] {
     text-transform: uppercase;
   }
 
+  .ledger-table .cell-body {
+    flex: 1;
+    min-width: 0;
+  }
+
   .ledger-table td.cell-name {
     display: block;
     margin-bottom: 0.3rem;
-  }
-
-  .ledger-table td.cell-name::before,
-  .ledger-table td.cell-actions::before {
-    display: none;
   }
 
   .ledger-table td.cell-price,
@@ -1059,7 +1063,12 @@ dialog[open] {
     text-align: left;
   }
 
+  .ledger-table td.cell-price {
+    white-space: normal;
+  }
+
   .ledger-table td.cell-actions {
+    display: block;
     padding-top: 0.4rem;
   }
 
