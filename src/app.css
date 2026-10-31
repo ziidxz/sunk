@@ -173,6 +173,10 @@ main {
   color: var(--muted);
 }
 
+.notice-break {
+  display: none;
+}
+
 .notice-warn {
   border-color: var(--accent);
   background: var(--accent-soft);
@@ -751,9 +755,14 @@ main {
   margin-top: 0.4rem;
 }
 
+.app-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
 .app-footer a {
   display: inline-block;
-  margin-right: 1rem;
   text-underline-offset: 3px;
 }
 
@@ -963,8 +972,25 @@ dialog[open] {
     min-width: 0;
   }
 
+  .notice-break {
+    display: inline;
+  }
+
   .notice .button {
     margin-left: 0;
+  }
+
+  .alert {
+    flex-wrap: nowrap;
+  }
+
+  .alert-kind,
+  .alert .button {
+    flex: none;
+  }
+
+  .alert p {
+    min-width: 0;
   }
 
   .summary {
