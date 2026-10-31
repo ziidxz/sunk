@@ -56,6 +56,19 @@ test("public pages keep the price and the order path together", () => {
   assert.match(terms, /non-transferable/);
 });
 
+test("landing structured data parses and matches the page", () => {
+  const landing = fs.readFileSync(path.join(root, "index.html"), "utf8");
+  const block = landing.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(block, "landing has one JSON-LD block");
+  const data = JSON.parse(block[1]);
+  const product = data["@graph"].find((item) => item["@type"] === "Product");
+  assert.equal(product.offers.price, "12.00");
+  assert.equal(product.offers.priceCurrency, "USD");
+  const faq = data["@graph"].find((item) => item["@type"] === "FAQPage");
+  const details = (landing.match(/<details>/g) || []).length;
+  assert.equal(faq.mainEntity.length, details, "FAQPage mirrors every visible answer");
+});
+
 test("public copy uses no em dash", () => {
   for (const name of fs.readdirSync(root)) {
     if (!name.endsWith(".html") && !name.endsWith(".txt")) continue;

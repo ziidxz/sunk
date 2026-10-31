@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sunk: a private subscription ledger</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+    }
+
+    body {
+      background: #f4efe4;
+      color: #1b1915;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .frame {
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 48px;
+      align-items: center;
+      width: 1200px;
+      height: 630px;
+      padding: 64px 72px;
+    }
+
+    .copy {
+      min-width: 0;
+    }
+
+    .wordmark {
+      margin: 0;
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+      font-size: 68px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .wordmark span {
+      color: #a63a2b;
+    }
+
+    h1 {
+      margin: 26px 0 20px;
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+      font-size: 54px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.06;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: #a63a2b;
+    }
+
+    .blurb {
+      margin: 0;
+      max-width: 34ch;
+      color: #6e675c;
+      font-size: 21px;
+    }
+
+    .blurb2 {
+      margin: 14px 0 0;
+      max-width: 30ch;
+      color: #1b1915;
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    .foot {
+      margin-top: 34px;
+      font-size: 17px;
+      color: #6e675c;
+    }
+
+    .foot strong {
+      color: #1b1915;
+      font-weight: 600;
+    }
+
+    .ledger {
+      border: 1px solid #b9ad97;
+      background: #fbf7ee;
+    }
+
+    .ledger-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 16px 22px 14px;
+      border-bottom: 1px solid #d8cebb;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #6e675c;
+    }
+
+    .row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 22px;
+      border-top: 1px solid #d8cebb;
+      font-size: 19px;
+    }
+
+    .row:first-of-type {
+      border-top: 0;
+    }
+
+    .row-name {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .row-meta {
+      color: #6e675c;
+      font-size: 15px;
+    }
+
+    .row-hike {
+      color: #a63a2b;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .row-price {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .total {
+      padding: 16px 22px 18px;
+      border-top: 1px solid #b9ad97;
+      background: #efe8d9;
+    }
+
+    .total-label {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #6e675c;
+    }
+
+    .total-big {
+      margin: 4px 0 0;
+      font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+      font-size: 54px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-year {
+      margin: 6px 0 0;
+      color: #6e675c;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="copy">
+      <p class="wordmark">Sunk<span>.</span></p>
+      <h1>A ledger for money<br>that leaves <em>quietly</em>.</h1>
+      <p class="blurb">Every subscription, its yearly cost, and what cancelling gives back.</p>
+      <p class="blurb2">No bank login. No account.<br>Nothing leaves your browser.</p>
+      <p class="foot"><strong>Free in the browser. The offline file is $12 once.</strong> ziidxz.github.io/sunk</p>
+    </div>
+    <div class="ledger">
+      <div class="ledger-head"><span>Sample ledger</span><span>October</span></div>
+      <div class="row"><span class="row-name">Streaming TV <span class="row-hike">was $15.99</span></span><span class="row-price">$17.99</span></div>
+      <div class="row"><span class="row-name">Music</span><span class="row-price">$10.99</span></div>
+      <div class="row"><span class="row-name">AI assistant</span><span class="row-price">$20.00</span></div>
+      <div class="row"><span class="row-name">Fitness studio</span><span class="row-price">$39.00</span></div>
+      <div class="total">
+        <p class="total-label">Leaving every month</p>
+        <p class="total-big">$90.97</p>
+        <p class="total-year">$1,091.64 a year</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

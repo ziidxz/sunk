@@ -10,11 +10,95 @@
   <meta property="og:title" content="Sunk: a private subscription ledger">
   <meta property="og:description" content="See every subscription, renewal and price change on one page. No bank login. No account. Nothing about your ledger leaves your browser.">
   <meta property="og:url" content="https://ziidxz.github.io/sunk/">
-  <meta property="og:image" content="https://ziidxz.github.io/sunk/icon-512.png">
-  <meta property="og:image:alt" content="Sunk: stacked ledger bars with a red dot">
+  <meta property="og:image" content="https://ziidxz.github.io/sunk/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sunk: a sample private ledger on paper, totalling $1,091.64 a year">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="landing.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "name": "Sunk offline edition",
+        "description": "A single HTML file with unlimited subscriptions, CSV import and .ics reminders. One payment, no account.",
+        "brand": { "@type": "Brand", "name": "Sunk" },
+        "url": "https://ziidxz.github.io/sunk/order.html",
+        "offers": {
+          "@type": "Offer",
+          "price": "12.00",
+          "priceCurrency": "USD",
+          "url": "https://ziidxz.github.io/sunk/order.html",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "Sunk", "url": "https://ziidxz.github.io/sunk/" }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does Sunk connect to my bank?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. There is no bank login, no statement upload and no credential. You type subscriptions yourself. The offline edition can read a CSV you downloaded from your bank, but that file is read in your browser and is not uploaded." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is my data stored?",
+            "acceptedAnswer": { "@type": "Answer", "text": "In this browser, using localStorage. There is no server copy and no account. You can export a JSON backup and restore it later or on another browser." }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when I clear my browser data?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The ledger is deleted with it. Download a JSON backup first if the entries matter. This is the trade for not having an account or a server." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Sunk cancel a subscription for me?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. It gives you the dates and amounts, stores a cancellation link, and records the change when you mark an entry cancelled. The cancellation itself still happens with the service." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the paid file expire?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. It is one HTML file with no activation and no license server. Keep a copy. It works as long as a browser can open local HTML files." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use it on my phone?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The web edition is responsive and can be added to your home screen. The data stays in that browser, so a phone and a laptop do not sync. The offline file can be opened on a phone as well, though CSV import is easier on a computer." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is CSV import paid?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It is the part with the most edge cases and the part heavy users need. The free edition stays useful with manual entry and five subscriptions." }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast does the file arrive?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Delivery is by email once payment clears, and it is handled by hand. Allow up to two business days. If nothing has arrived, check the spam folder and write again." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I read the file before running it?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. It is one plain HTML file with no install step and nothing obfuscated. Open it in a text editor, read the markup and the scripts, then run it in a browser." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who am I buying from?",
+            "acceptedAnswer": { "@type": "Answer", "text": "One person. There is no company behind Sunk. The maker reads the order email, sends the file and answers refund requests at ziidcxz@gmail.com." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if the paid file does not work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Write back within 14 days and the payment is refunded. The details are on the order page and in the terms." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to the page</a>
@@ -43,7 +127,7 @@
             <a class="button primary" href="app/">Open the free ledger</a>
             <a class="button ghost" href="order.html">Offline edition, $12</a>
           </div>
-          <p class="hero-note">Free for up to five subscriptions. The paid edition is one HTML file you keep.</p>
+          <p class="hero-note">Free for up to five subscriptions. The paid edition is one HTML file, about 125 KB, that you keep.</p>
         </div>
 
         <aside class="ledger-demo" aria-labelledby="sample-title">
@@ -228,9 +312,10 @@
               <li>Unlimited subscriptions</li>
               <li>CSV import with recurring charge detection</li>
               <li>Renewal and trial reminders as .ics</li>
-              <li>Works without a network connection</li>
+              <li>Works offline: one HTML file, about 125 KB</li>
               <li>JSON backup and restore</li>
               <li>No activation, no account, no recurring charge</li>
+              <li>Refunded within 14 days if it does not match the order page</li>
             </ul>
             <p class="price-note">Orders are handled by email for now, before card checkout opens. Try the free ledger first; the paid file uses the same ledger.</p>
             <a class="button ghost" href="order.html">See the offline edition</a>
@@ -299,6 +384,18 @@
           <details>
             <summary>Why is CSV import paid?</summary>
             <p>It is the part with the most edge cases and the part heavy users need. The free edition stays useful with manual entry and five subscriptions.</p>
+          </details>
+          <details>
+            <summary>How fast does the file arrive?</summary>
+            <p>Delivery is by email once payment clears, and it is handled by hand. Allow up to two business days. If nothing has arrived, check the spam folder and write again.</p>
+          </details>
+          <details>
+            <summary>Can I read the file before running it?</summary>
+            <p>Yes. It is one plain HTML file with no install step and nothing obfuscated. Open it in a text editor, read the markup and the scripts, then run it in a browser.</p>
+          </details>
+          <details>
+            <summary>Who am I buying from?</summary>
+            <p>One person. There is no company behind Sunk. The maker reads the order email, sends the file and answers refund requests at ziidcxz@gmail.com.</p>
           </details>
           <details>
             <summary>What if the paid file does not work?</summary>
