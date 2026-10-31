@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy: Sunk</title>
+  <meta name="description" content="How Sunk handles data. The ledger is stored in your browser. No account, no bank login, no analytics.">
+  <link rel="canonical" href="https://ziidxz.github.io/sunk/privacy.html">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the policy</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./">Sunk<span aria-hidden="true">.</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="order.html">Offline edition</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <a class="button ghost header-cta" href="app/">Open the ledger</a>
+    </div>
+  </header>
+
+  <main class="page-main wrap" id="main">
+    <div class="page-head">
+      <p class="kicker">Privacy</p>
+      <h1>The ledger stays on your device.</h1>
+      <p class="page-lede">Sunk has no user accounts and no backend for subscription data. This page explains what is stored, where, and what happens when you order the offline edition.</p>
+      <p class="legal-meta">Last updated 31 October 2026</p>
+    </div>
+
+    <div class="page-body">
+      <h2>The short version</h2>
+      <p>Subscription names, prices, dates and notes are stored by your browser on your device. They are not sent to a Sunk server, because there is no Sunk server for them. The site does not run analytics or advertising cookies.</p>
+
+      <h2>What the web edition stores</h2>
+      <p>The app uses localStorage under the key <code>sunk.v1</code> to keep:</p>
+      <ul>
+        <li>the subscriptions you enter, including names, prices, billing cycles, dates, categories, notes and cancellation links;</li>
+        <li>the price history created when you edit a price;</li>
+        <li>your ledger currency;</li>
+        <li>your theme choice, under a separate key.</li>
+      </ul>
+      <p>The data stays in the browser you used. It is not synced to another device. If you clear site data or use a private window that is discarded, the entries are deleted.</p>
+      <p>A service worker may cache the app's own files so the page opens faster. That cache contains the app, not your ledger, and it stays in your browser.</p>
+
+      <h2>What leaves the browser</h2>
+      <p>The web edition makes normal requests for the page files. Those requests reach the hosting provider, GitHub Pages, which may keep standard server logs such as an IP address and the requested file under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. Sunk does not add analytics or send the contents of the ledger in those requests.</p>
+      <p>CSV import in the offline edition reads the file locally. The file is not uploaded. JSON backups are created and downloaded locally.</p>
+      <p>The offline edition does not make network requests on its own. It loads no remote fonts, scripts or images.</p>
+
+      <h2>Email orders</h2>
+      <p>If you order the offline edition, you send an email to <a href="mailto:ziidcxz@gmail.com">ziidcxz@gmail.com</a>. The message will contain your email address and anything you choose to write. I use it to reply, arrange payment and deliver the file, and may keep it for accounting and tax records.</p>
+      <p>Do not send card numbers or bank credentials by email. If a payment provider is used, payment data is handled by that provider under its own privacy policy. I do not receive your full card details.</p>
+
+      <h2>Your choices</h2>
+      <ul>
+        <li>Clear the ledger at any time from Settings, or clear site data in the browser.</li>
+        <li>Download a JSON backup before clearing data if you want to keep it.</li>
+        <li>Ask me to delete order correspondence by writing to the email above. I may need to keep basic transaction records where the law requires it.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>Sunk is a general-purpose money tool and is not directed at children under 13. It does not knowingly collect personal information from children.</p>
+
+      <h2>Changes</h2>
+      <p>If this policy changes, the date at the top changes with it. Material changes will be noted on this page rather than applied silently to data already stored on your device.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy: <a href="mailto:ziidcxz@gmail.com">ziidcxz@gmail.com</a>.</p>
+
+      <div class="callout">
+        The free ledger is at <a href="app/">app/</a>. Nothing needs to be installed, and the entries start empty.
+      </div>
+    </div>
+  </main>
+
+  <section class="closing">
+    <footer class="site-footer wrap">
+      <p class="footer-note">&copy; 2026 Sunk. An independent tool, not financial advice. Built by <a href="https://github.com/ziidxz">ziidxz</a>.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="./">Home</a>
+        <a href="app/">Ledger</a>
+        <a href="order.html">Offline edition</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:ziidcxz@gmail.com">Email</a>
+      </nav>
+    </footer>
+  </section>
+</body>
+</html>

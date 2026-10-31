@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunk: a private subscription ledger</title>
+  <meta name="description" content="Sunk lists every subscription, what it costs over a year, and what cancelling gives back. No bank login, no account, no analytics.">
+  <link rel="canonical" href="https://ziidxz.github.io/sunk/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sunk: a private subscription ledger">
+  <meta property="og:description" content="See every subscription, renewal and price change on one page. No bank login. No account. Nothing about your ledger leaves your browser.">
+  <meta property="og:url" content="https://ziidxz.github.io/sunk/">
+  <meta property="og:image" content="https://ziidxz.github.io/sunk/icon-512.png">
+  <meta property="og:image:alt" content="Sunk: stacked ledger bars with a red dot">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the page</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./">Sunk<span aria-hidden="true">.</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#pricing">Price</a>
+        <a href="#questions">Questions</a>
+      </nav>
+      <a class="button ghost header-cta" href="app/">Open the ledger</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Private subscription ledger</p>
+          <h1 id="hero-title">A ledger for money that leaves <em>quietly</em>.</h1>
+          <p class="hero-lede">Sunk lists every subscription, shows what it costs over a year, and tells you what cancelling gives back. <strong>No bank login. No account. Nothing about your ledger is sent to a server.</strong></p>
+          <div class="hero-actions">
+            <a class="button primary" href="app/">Open the free ledger</a>
+            <a class="button ghost" href="order.html">Offline edition, $12</a>
+          </div>
+          <p class="hero-note">Free for up to five subscriptions. The paid edition is one HTML file you keep.</p>
+        </div>
+
+        <aside class="ledger-demo" aria-labelledby="sample-title">
+          <div class="demo-head">
+            <div>
+              <p class="demo-kicker" id="sample-title">Sample ledger</p>
+              <p class="demo-month">October</p>
+            </div>
+            <span class="demo-live">Try it</span>
+          </div>
+
+          <fieldset class="demo-fieldset">
+            <legend class="demo-legend">Untick a row you have cancelled. The totals follow.</legend>
+
+            <label class="sample-row">
+              <input type="checkbox" data-sample-toggle data-minor="1799" checked>
+              <span class="row-main">
+                <span class="row-name">Streaming TV</span>
+                <span class="row-meta">Every month <span class="tag tag-hike">was $15.99</span></span>
+              </span>
+              <span class="row-price">$17.99</span>
+            </label>
+
+            <label class="sample-row">
+              <input type="checkbox" data-sample-toggle data-minor="1099" checked>
+              <span class="row-main">
+                <span class="row-name">Music</span>
+                <span class="row-meta">Every month</span>
+              </span>
+              <span class="row-price">$10.99</span>
+            </label>
+
+            <label class="sample-row">
+              <input type="checkbox" data-sample-toggle data-minor="2000" checked>
+              <span class="row-main">
+                <span class="row-name">AI assistant</span>
+                <span class="row-meta">Every month</span>
+              </span>
+              <span class="row-price">$20.00</span>
+            </label>
+
+            <label class="sample-row">
+              <input type="checkbox" data-sample-toggle data-minor="299" checked>
+              <span class="row-main">
+                <span class="row-name">Cloud storage</span>
+                <span class="row-meta">Every month</span>
+              </span>
+              <span class="row-price">$2.99</span>
+            </label>
+
+            <label class="sample-row">
+              <input type="checkbox" data-sample-toggle data-minor="3900" checked>
+              <span class="row-main">
+                <span class="row-name">Fitness studio</span>
+                <span class="row-meta">Every month <span class="tag tag-trial">trial ends in 12 days</span></span>
+              </span>
+              <span class="row-price">$39.00</span>
+            </label>
+          </fieldset>
+
+          <div class="demo-total">
+            <p class="total-label">Leaving every month</p>
+            <p class="total-number" id="sample-monthly" aria-live="polite">$90.97</p>
+            <p class="total-year" id="sample-yearly" aria-live="polite">$1,091.64 a year</p>
+            <p class="total-kept" id="sample-kept" aria-live="polite">Nothing cancelled. Untick a row to see what it would give back.</p>
+          </div>
+
+          <p class="demo-foot">A sample, not your data. <a href="app/?demo=1">Open this sample in the app</a>.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">01 / The gap</p>
+          <h2 class="statement">A card statement tells you after the money leaves.</h2>
+        </div>
+        <div class="split">
+          <div class="prose">
+            <p>Subscriptions are small, predictable and easy to stop noticing. A trial becomes a charge. A yearly plan renews in a month you were not watching. A price goes up and the email lands in a folder you do not read.</p>
+            <p>Most banking apps are built to show what happened. Sunk is built around what is about to happen.</p>
+          </div>
+          <div class="prose">
+            <p>There is no bank connection to approve, and no account to create. You type what you pay for, and the page does the arithmetic: monthly cost, yearly cost, the next charge, the price change, the trial date.</p>
+            <p>When you are done, the whole commitment sits on one screen instead of being reconstructed from six different billing pages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="behaviors-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">02 / The ledger</p>
+          <h2 class="statement" id="behaviors-title">Four questions, answered before the charge.</h2>
+        </div>
+        <div class="behaviors">
+          <div class="behavior">
+            <p class="behavior-index">01</p>
+            <h3>What leaves every month</h3>
+            <p>Weekly, monthly and yearly plans are converted to one monthly and one yearly figure. A $120 renewal is not treated like a $10 one because it happens to be billed once.</p>
+          </div>
+          <div class="behavior">
+            <p class="behavior-index">02</p>
+            <h3>What renews next</h3>
+            <p>Overdue charges and the next 30 days sit at the top. Trial endings are called out separately, because a trial is the one renewal that surprises people.</p>
+          </div>
+          <div class="behavior">
+            <p class="behavior-index">03</p>
+            <h3>What changed price</h3>
+            <p>When you edit a price, the old one stays in the history. The row shows the increase and the date it started, so you can see what the service is costing now rather than what it cost when you signed up.</p>
+          </div>
+          <div class="behavior">
+            <p class="behavior-index">04</p>
+            <h3>What cancelling gives back</h3>
+            <p>Every row can be marked cancelled. Sunk shows the yearly amount that stops leaving and keeps the entry in the ledger, so the history does not disappear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy-band" id="privacy">
+      <div class="wrap privacy-grid">
+        <div>
+          <p class="kicker">03 / Privacy</p>
+          <h2>Your bank never enters this page.</h2>
+          <p class="privacy-lede">Sunk has no backend to send your ledger to. The web edition is a set of static files, and the entries are stored by your browser.</p>
+        </div>
+        <ul class="privacy-list">
+          <li>
+            <strong>No bank login</strong>
+            <span>There is no account to link, no statement to upload, and no credential to hand over.</span>
+          </li>
+          <li>
+            <strong>No analytics</strong>
+            <span>The app does not load a tracking script or set an advertising cookie.</span>
+          </li>
+          <li>
+            <strong>Stored in this browser</strong>
+            <span>Subscriptions live in localStorage on your device. Clearing site data deletes them unless you keep a JSON backup.</span>
+          </li>
+          <li>
+            <strong>Offline when you buy the file</strong>
+            <span>The offline edition does not need a network connection after you save it.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">04 / Price</p>
+          <h2 class="statement">Free to keep five. Twelve dollars to keep the file.</h2>
+        </div>
+        <div class="price-grid">
+          <article class="price-panel" aria-labelledby="free-title">
+            <div>
+              <p class="price-label" id="free-title">Free web edition</p>
+              <p class="price-amount">$0</p>
+              <p class="price-for">No account, no card.</p>
+            </div>
+            <ul class="price-list">
+              <li>Up to five subscriptions</li>
+              <li>Manual entry</li>
+              <li>Monthly and yearly totals</li>
+              <li>Renewal calendar and price history</li>
+              <li>JSON backup and restore</li>
+            </ul>
+            <p class="price-note">Runs in this browser at this address. Clearing site data deletes the ledger unless you downloaded a backup.</p>
+            <a class="button primary" href="app/">Open the free ledger</a>
+          </article>
+
+          <article class="price-panel pro" aria-labelledby="pro-title">
+            <div>
+              <p class="price-label" id="pro-title">Offline edition</p>
+              <p class="price-amount">$12 <small>once</small></p>
+              <p class="price-for">One HTML file. Yours to keep.</p>
+            </div>
+            <ul class="price-list">
+              <li>Unlimited subscriptions</li>
+              <li>CSV import with recurring charge detection</li>
+              <li>Renewal and trial reminders as .ics</li>
+              <li>Works without a network connection</li>
+              <li>JSON backup and restore</li>
+              <li>No activation, no account, no recurring charge</li>
+            </ul>
+            <p class="price-note">Orders are handled by email for now, before card checkout opens. Try the free ledger first; the paid file uses the same ledger.</p>
+            <a class="button ghost" href="order.html">See the offline edition</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="file-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">05 / The file</p>
+          <h2 class="statement" id="file-title">A program that does not need installing.</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <p class="step-index">01</p>
+            <h3>Order by email</h3>
+            <p>Write to the address on the order page. You get a reply with the available payment method before anything is charged.</p>
+          </div>
+          <div class="step">
+            <p class="step-index">02</p>
+            <h3>Open the HTML file</h3>
+            <p>Double-click it, or open it from your browser's file menu. It runs locally and saves in that browser.</p>
+          </div>
+          <div class="step">
+            <p class="step-index">03</p>
+            <h3>Keep a backup</h3>
+            <p>Download the JSON file whenever the ledger matters. The HTML file and the backup can live on your own drive.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="questions">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">06 / Questions</p>
+          <h2 class="statement">The parts people ask about first.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Does Sunk connect to my bank?</summary>
+            <p>No. There is no bank login, no statement upload and no credential. You type subscriptions yourself. The offline edition can read a CSV you downloaded from your bank, but that file is read in your browser and is not uploaded.</p>
+          </details>
+          <details>
+            <summary>Where is my data stored?</summary>
+            <p>In this browser, using localStorage. There is no server copy and no account. You can export a JSON backup and restore it later or on another browser.</p>
+          </details>
+          <details>
+            <summary>What happens when I clear my browser data?</summary>
+            <p>The ledger is deleted with it. Download a JSON backup first if the entries matter. This is the trade for not having an account or a server.</p>
+          </details>
+          <details>
+            <summary>Can Sunk cancel a subscription for me?</summary>
+            <p>No. It gives you the dates and amounts, stores a cancellation link, and records the change when you mark an entry cancelled. The cancellation itself still happens with the service.</p>
+          </details>
+          <details>
+            <summary>Does the paid file expire?</summary>
+            <p>No. It is one HTML file with no activation and no license server. Keep a copy. It works as long as a browser can open local HTML files.</p>
+          </details>
+          <details>
+            <summary>Can I use it on my phone?</summary>
+            <p>Yes. The web edition is responsive and can be added to your home screen. The data stays in that browser, so a phone and a laptop do not sync. The offline file can be opened on a phone as well, though CSV import is easier on a computer.</p>
+          </details>
+          <details>
+            <summary>Why is CSV import paid?</summary>
+            <p>It is the part with the most edge cases and the part heavy users need. The free edition stays useful with manual entry and five subscriptions.</p>
+          </details>
+          <details>
+            <summary>What if the paid file does not work?</summary>
+            <p>Write back within 14 days and the payment is refunded. The details are on the <a href="order.html">order page</a> and in the <a href="terms.html">terms</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="closing">
+    <div class="wrap closing-grid">
+      <div>
+        <p class="kicker">Start here</p>
+        <h2>See the whole ledger before you add a single subscription.</h2>
+        <p>The sample opens with five entries. Clear it and add your own when you are ready.</p>
+      </div>
+      <div class="closing-actions">
+        <a class="button on-ink" href="app/?demo=1">Open the sample</a>
+        <a class="button ghost-ink" href="app/">Start empty</a>
+      </div>
+    </div>
+
+    <footer class="site-footer wrap">
+      <p class="footer-note">&copy; <span id="year">2026</span> Sunk. An independent tool, not financial advice. Built by <a href="https://github.com/ziidxz">ziidxz</a>.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="app/">Ledger</a>
+        <a href="order.html">Offline edition</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:ziidcxz@gmail.com">Email</a>
+      </nav>
+    </footer>
+  </section>
+
+  <script src="landing.js"></script>
+</body>
+</html>

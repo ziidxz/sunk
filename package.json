@@ -1,0 +1,14 @@
+{
+  "name": "sunk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A private subscription ledger. See what renews, what went up, and what cancelling gives back.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node tools/build.mjs && node --test test/*.test.js",
+    "dev": "node server.mjs"
+  },
+  "devDependencies": {
+    "happy-dom": "^21.0.4"
+  }
+}

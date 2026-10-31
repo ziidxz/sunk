@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunk: subscription ledger</title>
+  <meta name="description" content="A private ledger for every subscription, trial and renewal. See what leaves each month, what went up, and what cancelling would give back.">
+  <meta name="theme-color" content="#f4efe4">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the ledger</a>
+
+  <header class="app-header">
+    <a class="wordmark" href="../">Sunk<span aria-hidden="true">.</span></a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#ledger" data-view="ledger">Ledger</a>
+      <a href="#calendar" data-view="calendar">Calendar</a>
+      <a href="#import" data-view="import">Import</a>
+      <a href="#settings" data-view="settings">Settings</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="button quiet" id="theme-toggle" aria-label="Switch to dark theme">Dark</button>
+      <button type="button" class="button primary" id="add-button">Add a subscription</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="storage-warning" class="notice notice-warn" hidden>
+      <strong>This browser is not saving the ledger.</strong>
+      <span>Site data may be blocked or full. Allow site data for this page, or use the offline edition and keep a backup file.</span>
+    </div>
+
+    <div id="sample-notice" class="notice" hidden>
+      <strong>This is a sample ledger.</strong>
+      <span>The names and amounts are placeholders. Clear them when you are ready to add your own.</span>
+      <button type="button" class="button ghost" id="clear-sample">Clear the sample</button>
+    </div>
+
+    <section class="view" id="view-ledger" aria-labelledby="ledger-title">
+      <div class="summary">
+        <div>
+          <p class="label">Leaving every month</p>
+          <p class="total tabular" id="monthly-total">$0.00</p>
+          <p class="subtotal" id="yearly-total">$0.00 a year</p>
+          <p class="subtotal positive" id="stopped-total" hidden></p>
+        </div>
+        <dl class="summary-facts">
+          <div>
+            <dt>Active</dt>
+            <dd class="tabular" id="active-count">0</dd>
+          </div>
+          <div>
+            <dt>Next 30 days</dt>
+            <dd class="tabular" id="upcoming-count">0</dd>
+          </div>
+          <div>
+            <dt>Price changes</dt>
+            <dd class="tabular" id="hike-count">0</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div id="alerts" class="alerts" aria-live="polite"></div>
+
+      <div class="section-head">
+        <h1 id="ledger-title" class="section-title">The ledger</h1>
+        <label class="inline-field" for="filter-status">Show
+          <select id="filter-status">
+            <option value="active">Active</option>
+            <option value="all">Everything</option>
+            <option value="paused">Paused</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="ledger-wrap">
+        <table class="ledger-table" id="ledger-table">
+          <caption class="sr-only">Subscriptions, their billing cycle, price and next charge</caption>
+          <thead>
+            <tr>
+              <th scope="col">Subscription</th>
+              <th scope="col">Cycle</th>
+              <th scope="col" class="num">Price</th>
+              <th scope="col">Next charge</th>
+              <th scope="col"><span class="sr-only">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="ledger-body"></tbody>
+        </table>
+        <p id="ledger-empty-filter" class="empty-line" hidden></p>
+      </div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <h2 class="serif">Nothing on the ledger yet.</h2>
+        <p>Add the first subscription to see what leaves each month, or load a sample and look around.</p>
+        <div class="empty-actions">
+          <button type="button" class="button primary" id="empty-add">Add a subscription</button>
+          <button type="button" class="button ghost" id="load-sample">Load a sample ledger</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-calendar" aria-labelledby="calendar-title" hidden>
+      <div class="section-head">
+        <h1 id="calendar-title" class="section-title">Calendar</h1>
+        <div class="section-actions">
+          <button type="button" class="button ghost" id="calendar-prev" aria-label="Previous month">Previous</button>
+          <button type="button" class="button ghost" id="calendar-today">This month</button>
+          <button type="button" class="button ghost" id="calendar-next" aria-label="Next month">Next</button>
+          <button type="button" class="button ghost" id="calendar-export">Reminders (.ics)</button>
+        </div>
+      </div>
+      <div class="calendar-summary">
+        <p class="calendar-month serif" id="calendar-month">October 2026</p>
+        <p id="calendar-total" class="muted"></p>
+      </div>
+      <div id="calendar-grid" class="calendar-grid"></div>
+      <div id="calendar-list" class="calendar-list"></div>
+      <p class="hint" id="calendar-hint"></p>
+    </section>
+
+    <section class="view" id="view-import" aria-labelledby="import-title" hidden>
+      <div class="section-head">
+        <h1 id="import-title" class="section-title">Import a statement</h1>
+      </div>
+      <div id="import-body"></div>
+    </section>
+
+    <section class="view" id="view-settings" aria-labelledby="settings-title" hidden>
+      <div class="section-head">
+        <h1 id="settings-title" class="section-title">Settings</h1>
+      </div>
+      <div id="settings-body"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p><strong>Sunk</strong> keeps this ledger in your browser. No account, no bank login, no analytics.</p>
+    <p><a href="../privacy.html">Privacy</a> <a href="../terms.html">Terms</a> <a href="../order.html">Offline edition</a> <a href="../">Home</a></p>
+  </footer>
+
+  <dialog id="sub-dialog" aria-labelledby="sub-dialog-title">
+    <form id="sub-form" novalidate>
+      <div class="dialog-head">
+        <h2 id="sub-dialog-title" class="serif">Add a subscription</h2>
+        <button type="button" class="button quiet" id="sub-close" aria-label="Close">Close</button>
+      </div>
+
+      <div class="form-grid">
+        <label class="field span-2">
+          <span>Name</span>
+          <input type="text" name="name" id="sub-name" maxlength="60" autocomplete="off" placeholder="Streaming TV" required>
+        </label>
+
+        <label class="field">
+          <span>Price</span>
+          <input type="text" name="price" id="sub-price" inputmode="decimal" autocomplete="off" placeholder="17.99" required>
+        </label>
+
+        <label class="field">
+          <span>Billing cycle</span>
+          <select name="cycle" id="sub-cycle">
+            <option value="weekly">Every week</option>
+            <option value="biweekly">Every 2 weeks</option>
+            <option value="monthly" selected>Every month</option>
+            <option value="quarterly">Every 3 months</option>
+            <option value="semiannual">Every 6 months</option>
+            <option value="yearly">Every year</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Next charge</span>
+          <input type="date" name="nextDate" id="sub-next" required>
+        </label>
+
+        <label class="field">
+          <span>Trial ends (optional)</span>
+          <input type="date" name="trialEndsAt" id="sub-trial">
+        </label>
+
+        <label class="field">
+          <span>Category</span>
+          <select name="category" id="sub-category">
+            <option>Entertainment</option>
+            <option>Work</option>
+            <option>Utilities</option>
+            <option>Health</option>
+            <option>Software</option>
+            <option>News</option>
+            <option>Education</option>
+            <option selected>Other</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Status</span>
+          <select name="status" id="sub-status">
+            <option value="active" selected>Active</option>
+            <option value="paused">Paused</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </label>
+
+        <label class="field span-2">
+          <span>Cancellation link (optional)</span>
+          <input type="url" name="cancelUrl" id="sub-cancel-url" placeholder="https://example.com/account/billing">
+        </label>
+
+        <label class="field span-2">
+          <span>Note (optional)</span>
+          <textarea name="notes" id="sub-notes" rows="2" placeholder="Which plan, who uses it, anything worth remembering"></textarea>
+        </label>
+      </div>
+
+      <p class="form-note">Amounts are in <strong id="form-currency">USD</strong>. Change the ledger currency in Settings.</p>
+      <p class="hint" id="sub-return" hidden></p>
+      <p class="hint" id="sub-cancel-link" hidden></p>
+      <p class="error" id="sub-error" role="alert" hidden></p>
+
+      <div class="dialog-actions">
+        <button type="button" class="button danger" id="sub-delete" hidden>Delete</button>
+        <span class="spacer"></span>
+        <button type="button" class="button ghost" id="sub-cancel">Cancel</button>
+        <button type="submit" class="button primary" id="sub-save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <form method="dialog">
+      <h2 id="confirm-title" class="serif">Are you sure?</h2>
+      <p id="confirm-text"></p>
+      <div class="dialog-actions">
+        <span class="spacer"></span>
+        <button class="button ghost" value="no" id="confirm-no">Keep it</button>
+        <button class="button danger" value="yes" id="confirm-yes">Continue</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="core.js"></script>
+  <script src="store.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
