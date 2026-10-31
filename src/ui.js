@@ -394,14 +394,14 @@
     nameCell.appendChild(make("span", { class: "sub-meta", text: meta.join(" \u00b7 ") }));
 
     var cycleCell = make("td", {}, [
-      make("span", { class: "cell-label", "aria-hidden": "true", text: "Cycle" }),
+      make("span", { class: "cell-label", text: "Cycle" }),
       make("div", { class: "cell-body" }, [
         make("span", { text: C.cycleLabel(sub.cycle) })
       ])
     ]);
 
     var priceCell = make("td", { class: "cell-price" }, [
-      make("span", { class: "cell-label", "aria-hidden": "true", text: "Price" })
+      make("span", { class: "cell-label", text: "Price" })
     ]);
     var priceBody = make("div", { class: "cell-body" });
     priceBody.appendChild(make("span", { class: "price-main", text: fmt(sub.priceMinor) + " " + C.cycleShort(sub.cycle) }));
@@ -421,7 +421,7 @@
     priceCell.appendChild(priceBody);
 
     var dueCell = make("td", {}, [
-      make("span", { class: "cell-label", "aria-hidden": "true", text: "Next charge" })
+      make("span", { class: "cell-label", text: "Next charge" })
     ]);
     var dueBody = make("div", { class: "cell-body" });
     if (sub.status === "active") {
