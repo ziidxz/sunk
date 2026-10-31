@@ -80,6 +80,23 @@ test("loads the sample ledger with correct totals and notice", () => {
   assert.equal(JSON.parse(win.localStorage.getItem("sunk.v1")).subs.length, 5);
 });
 
+test("wraps ledger values for the mobile card layout", () => {
+  const win = boot();
+  loadSample(win);
+
+  const row = id(win, "ledger-body").querySelector("tr");
+  assert.equal(row.querySelectorAll(".cell-label").length, 3);
+
+  const price = row.querySelector(".cell-price");
+  assert.equal(price.querySelector(".cell-label").textContent, "Price");
+  assert.ok(price.querySelector(".cell-body .price-main"));
+  assert.ok(price.querySelector(".cell-body .hike"));
+
+  const due = row.querySelectorAll("td")[3];
+  assert.ok(due.querySelector(".cell-body .due"));
+  assert.ok(due.querySelector(".cell-body .due-date"));
+});
+
 test("adds a subscription through the form and escapes its name", async () => {
   const win = boot();
   fillSub(win, {
