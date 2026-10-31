@@ -76,6 +76,7 @@ test("loads the sample ledger with correct totals and notice", () => {
   assert.equal(id(win, "sample-notice").hidden, false);
   assert.equal(id(win, "empty-state").hidden, true);
   assert.equal(id(win, "stopped-total").hidden, true);
+  assert.match(id(win, "alerts").textContent, /Fitness studio trial ends/i);
   assert.equal(JSON.parse(win.localStorage.getItem("sunk.v1")).subs.length, 5);
 });
 
@@ -138,6 +139,43 @@ test("blocks a sixth subscription in the free edition", () => {
   assert.equal(id(win, "upgrade-dialog").open, true);
   assert.equal(id(win, "sub-dialog").open, false);
   assert.match(id(win, "upgrade-lead").textContent, /five|5/i);
+});
+
+test("does not let a cancelled entry resume into a sixth free slot", async () => {
+  const win = boot();
+  loadSample(win);
+
+  const cancel = Array.from(id(win, "ledger-body").querySelectorAll("button"))
+    .find((button) => button.getAttribute("aria-label") === "Mark Streaming TV as cancelled");
+  cancel.click();
+  id(win, "confirm-yes").click();
+  await flush();
+  assert.equal(id(win, "active-count").textContent, "4");
+
+  fillSub(win, { name: "Extra service", price: "5.00", nextDate: "2026-11-18" });
+  id(win, "sub-save").click();
+  await flush();
+  assert.equal(id(win, "active-count").textContent, "5");
+  assert.equal(id(win, "ledger-body").children.length, 5);
+
+  const filter = id(win, "filter-status");
+  filter.value = "all";
+  filter.dispatchEvent(new win.Event("change", { bubbles: true }));
+  assert.equal(id(win, "ledger-body").children.length, 6);
+
+  const cancelled = Array.from(id(win, "ledger-body").querySelectorAll(".sub-name"))
+    .find((button) => button.textContent === "Streaming TV");
+  cancelled.click();
+  id(win, "sub-status").value = "active";
+  id(win, "sub-save").click();
+  await flush();
+
+  assert.equal(id(win, "sub-dialog").open, true);
+  assert.match(id(win, "sub-error").textContent, /five|5/i);
+  const stored = JSON.parse(win.localStorage.getItem("sunk.v1"));
+  const streaming = stored.subs.find((sub) => sub.name === "Streaming TV");
+  assert.equal(streaming.status, "cancelled");
+  assert.equal(id(win, "active-count").textContent, "5");
 });
 
 test("marks a subscription cancelled and reports the returned money", async () => {

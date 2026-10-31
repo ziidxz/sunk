@@ -612,8 +612,12 @@
     }
 
     var existing = editingId ? findSub(editingId) : null;
+    var nextStatus = $("sub-status").value;
     if (!existing && atLimit()) {
       return setFormError("The free edition holds " + C.FREE_LIMIT + " subscriptions.");
+    }
+    if (!PRO && existing && existing.status === "cancelled" && nextStatus !== "cancelled" && atLimit()) {
+      return setFormError("The free edition holds " + C.FREE_LIMIT + " subscriptions. Cancel another entry or use the offline edition.");
     }
 
     var today = C.todayISO();
@@ -638,7 +642,7 @@
     sub.cycle = $("sub-cycle").value;
     sub.nextDate = nextDate;
     sub.trialEndsAt = trialEndsAt;
-    sub.status = $("sub-status").value;
+    sub.status = nextStatus;
     sub.category = $("sub-category").value;
     sub.cancelUrl = cancelUrl;
     sub.notes = String($("sub-notes").value || "").slice(0, 500).trim();

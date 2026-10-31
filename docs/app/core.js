@@ -791,7 +791,7 @@
         category: "Health",
         cancelUrl: "",
         notes: "Sample entry.",
-        trialEndsAt: addDays(base, 12),
+        trialEndsAt: addDays(base, 5),
         createdAt: addDays(base, -30),
         priceHistory: [{ date: addDays(base, -30), priceMinor: 3900 }],
         lastUsed: ""
