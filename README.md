@@ -130,3 +130,5 @@ refund window and delivery promise should stay in one place.
 Copyright 2026 the maker of Sunk. All rights reserved. The source is published
 for transparency and review; the offline edition is licensed for one person's
 personal use under the terms at <https://ziidxz.github.io/sunk/terms.html>.
+
+Support: [one-time, any amount](https://github.com/sponsors/ziidxz).
